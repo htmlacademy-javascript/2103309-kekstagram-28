@@ -1,41 +1,42 @@
 // Проходит ли строка по длинне?
 function findLenght(str) {
-  letters = 20;
+  let letters = 20;
   if (str.length >= letters) {
     return true;
-    }
-      return false;
+  }
+return false;
 }
-findLenght('Теплый пушистый котенок спит, свернулся в клубочек и мурчит.', letters)
+findLenght('Теплый пушистый котенок спит, свернулся в клубочек и мурчит.', letters);
 
 // Полидром ли этот текст (и текст с пробелами)?
 function isItPalidrom(str) {
   str = str.toLowerCase().replaceAll(/[^а-яa-z1-9]/g, '');
 
-  let index = str.length - 1;
+  const index = str.length - 1;
   for (let i = 0; i < str.length / 2; i++) {
-      if (str[i] !== str[index - i]) {
-          return false;
-      }
+    if (str[i] !== str[index - i]) {
+      return false;
+    }
   }
-  return true;
+return true;
 }
-isItPalidrom('level')
+isItPalidrom('level');
 
 // Есть ли в этой строке цифры?
 function isItNumber(str) {
-	let string = parseInt(str.replaceAll(/[^\d]/g, ''))
+   const string = parseInt(str.replaceAll(/[^\d]/g, ''));
 
   if (typeof(string) === true) {
     console.log(Number(string))
-  } console.log(string)
+  }
+console.log(string)
 }
 isItNumber('1 мяу')
 
 
 // Плюс префикс
 function originalStr(strOrig, strLenght, strAdd) {
-  prefixLength = strLenght - strOrig.length
+  let prefixLength = strLenght - strOrig.length
     if (prefixLength <= 0) {
     return strOrig
   }
