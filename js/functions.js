@@ -20,11 +20,12 @@ isItPalidrom('level');
 
 // Есть ли в этой строке цифры?
 function isItNumber(str) {
-  const string = parseInt(str.replaceAll(/[^\d]/g, ''), 10);
 
-  if (typeof string !== 'string') {
+  if (typeof str !== 'number') {
+    const string = parseInt(str.replaceAll(/[^\d]/g, ''), 10);
     return string;
   }
+  return str;
 }
 isItNumber('1 мяу');
 
