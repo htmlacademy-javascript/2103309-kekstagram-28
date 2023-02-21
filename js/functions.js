@@ -1,7 +1,7 @@
 // Проходит ли строка по длинне?
 function findLenght(str, letters) {
-    return str.length >= letters
-  }
+  return str.length >= letters;
+}
 findLenght('Теплый пушистый котенок спит, свернулся в клубочек и мурчит.', 5);
 
 // Полидром ли этот текст (и текст с пробелами)?
@@ -22,7 +22,7 @@ isItPalidrom('level');
 function isItNumber(str) {
   const string = parseInt(str.replaceAll(/[^\d]/g, ''), 10);
 
-  if (typeof string) {
+  if (typeof string !== 'string') {
     console.log(Number(string));
   }
 }
@@ -39,6 +39,6 @@ function originalStr(strOrig, strLenght, strAdd) {
   for (let i = 0; i < prefixLength; i++) {
     prefix += strAdd[i % strAdd.length];
   }
-  return prefix + strOrig
+  return prefix + strOrig;
 }
 originalStr('q', 4, 'werty');
