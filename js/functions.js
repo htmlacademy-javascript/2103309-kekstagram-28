@@ -23,7 +23,7 @@ function isItNumber(str) {
   const string = parseInt(str.replaceAll(/[^\d]/g, ''), 10);
 
   if (typeof string !== 'string') {
-    console.log(string);
+    return string;
   }
 }
 isItNumber('1 мяу');
