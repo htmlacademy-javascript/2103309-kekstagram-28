@@ -82,27 +82,25 @@ const getRandomArrayElement = (elements) => elements[getRandomInteger(0, element
 // функция для записи адреса картинки аватара пользователя.
 const userAvatarPhoto = () => {
   const photoOfAvatar = getRandomInteger(1, AVATAR_NUMBER.length - 2);
-  return 'img/avatar-'+photoOfAvatar+'.svg;';
+  return `img/avatar-${ photoOfAvatar }.svg;`;
 };
 
 // массив объектов с комментариями.
 const userComments = () => ({
-    id: randomNumber(1,1000),
-    avatar: userAvatarPhoto(),
-    message: getRandomArrayElement(MASSAGES),
-    name: getRandomArrayElement(NAMES)
+  id: randomNumber(1,1000),
+  avatar: userAvatarPhoto(),
+  message: getRandomArrayElement(MASSAGES),
+  name: getRandomArrayElement(NAMES)
 });
 
 // массив объектов с фотографиями пользоваиелей.
 const userPhotos = () => ({
-    id: generateId(ID),
-    url: 'photos/'+generatePhotoId(ID)+'.jpg',
-    description: getRandomArrayElement(DESCRIPTIONS),
-    likes: randomNumber(15,200),
-    comments: userComments()
+  id: generateId(ID),
+  url: `photos/${ generatePhotoId(ID) }.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: randomNumber(15,200),
+  comments: userComments()
 });
 
 //создаем массив из 25 объектов-фотографий.
-const similarPhotos = Array.from({length: 25}, userPhotos);
-
-console.log(similarPhotos);
+Array.from({length: 25}, userPhotos);
