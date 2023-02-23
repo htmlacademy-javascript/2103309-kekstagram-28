@@ -17,10 +17,10 @@ const DESCRIPTIONS = [
 
 // функция получения случайного числа из диапазона.
 function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-};
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-// аватак комментирующего лица.
+// аватар комментирующего лица.
 const AVATAR_NUMBER = [1, 2, 3, 4, 5, 6];
 
 // текст комментария, оставленного пользователями.
@@ -55,7 +55,7 @@ const getRandomInteger = (min, max) => {
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
-}
+};
 
 // получаем случайное неповторяющееся число из массива.
 const getId = (min, max) => {
@@ -72,7 +72,7 @@ const getId = (min, max) => {
     previousValues.push(currentValue);
     return currentValue;
   };
-}
+};
 const generatePhotoId = getId(1, 25);
 const generateId = getId(1, 25);
 
@@ -105,4 +105,4 @@ const userPhotos = () => ({
 //создаем массив из 25 объектов-фотографий.
 const similarPhotos = Array.from({length: 25}, userPhotos);
 
-console.log (similarPhotos);
+console.log(similarPhotos);
