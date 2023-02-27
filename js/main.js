@@ -5,6 +5,7 @@ const maxAvatarNumber = 6;
 const minLikeNumber = 15;
 const maxLikeNumber = 200;
 const maxCommentNumber = 1000;
+const maxArrayLenght = 25;
 
 // строка — описание фотографии.
 const DESCRIPTIONS = [
@@ -95,4 +96,4 @@ const userPhotos = () => ({
 });
 
 //создаем массив из 25 объектов-фотографий.
-Array.from({length: 25}, userPhotos);
+Array.from({length: maxArrayLenght}, userPhotos);
