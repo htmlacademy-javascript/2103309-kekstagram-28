@@ -1,5 +1,10 @@
-// строка — адрес картинки вида photos/{{i}}.jpg.
-const ID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+//Магические числа
+const minIdNumber = 1;
+const maxIdNumber = 25;
+const maxAvatarNumber = 6;
+const minLikeNumber = 15;
+const maxLikeNumber = 200;
+const maxCommentNumber = 1000;
 
 // строка — описание фотографии.
 const DESCRIPTIONS = [
@@ -14,14 +19,6 @@ const DESCRIPTIONS = [
   'Обожаю эту штуку, как называется не подскажите? m(^_^)m',
   'Разворачивайтесь, уходим, без комментариев.',
 ];
-
-// функция получения случайного числа из диапазона.
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// аватар комментирующего лица.
-const AVATAR_NUMBER = [1, 2, 3, 4, 5, 6];
 
 // текст комментария, оставленного пользователями.
 const MASSAGES = [
@@ -48,7 +45,7 @@ const NAMES = [
   'На РаСсЛаБоНе',
 ];
 
-// ищем случайный индекс элемента из массивов
+// ищем случайное число.
 const getRandomInteger = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
@@ -57,7 +54,7 @@ const getRandomInteger = (min, max) => {
   return Math.floor(result);
 };
 
-// получаем случайное неповторяющееся число из массива.
+// получаем случайное неповторяющееся число.
 const getId = (min, max) => {
   const previousValues = [];
 
@@ -73,32 +70,27 @@ const getId = (min, max) => {
     return currentValue;
   };
 };
-const generatePhotoId = getId(1, 25);
-const generateId = getId(1, 25);
+
+const generatePhotoId = getId(minIdNumber, maxIdNumber);
+const generateId = getId(minIdNumber, maxIdNumber);
 
 // «разделяй и властвуй» =)
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-// функция для записи адреса картинки аватара пользователя.
-const userAvatarPhoto = () => {
-  const photoOfAvatar = getRandomInteger(1, AVATAR_NUMBER.length - 2);
-  return `img/avatar-${ photoOfAvatar }.svg;`;
-};
-
 // массив объектов с комментариями.
 const userComments = () => ({
-  id: randomNumber(1,1000),
-  avatar: userAvatarPhoto(),
+  id: getRandomInteger(minIdNumber, maxCommentNumber),
+  avatar: `img/avatar-${ getRandomInteger(minIdNumber, maxAvatarNumber) }.svg`,
   message: getRandomArrayElement(MASSAGES),
   name: getRandomArrayElement(NAMES)
 });
 
 // массив объектов с фотографиями пользоваиелей.
 const userPhotos = () => ({
-  id: generateId(ID),
-  url: `photos/${ generatePhotoId(ID) }.jpg`,
+  id: generateId(),
+  url: `photos/${ generatePhotoId() }.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
-  likes: randomNumber(15,200),
+  likes: getRandomInteger(minLikeNumber, maxLikeNumber),
   comments: userComments()
 });
 
