@@ -20,3 +20,5 @@ newPhotos.forEach(({url, likes, comments}) => {
 });
 
 newContainer.appendChild(fragment);
+
+export {newPhotos};
