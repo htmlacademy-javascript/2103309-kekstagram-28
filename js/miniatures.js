@@ -9,6 +9,7 @@ const newPhotos = getAllUserPhotos();
 
 const fragment = document.createDocumentFragment();
 
+const renderPhotos = () => {
 
 newPhotos.forEach(({url, likes, comments}) => {
   const newElement = templateMiniatures.cloneNode(true);
@@ -17,8 +18,9 @@ newPhotos.forEach(({url, likes, comments}) => {
   newElement.querySelector('.picture__likes').textContent = likes;
 
   fragment.appendChild(newElement);
-});
+  });
 
-newContainer.appendChild(fragment);
+  newContainer.appendChild(fragment);
+};
 
-export {newPhotos};
+export {renderPhotos};
