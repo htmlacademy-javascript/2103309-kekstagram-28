@@ -1,14 +1,11 @@
-import {getAllUserPhotos} from './data.js';
-
-//создаем контейнер для новых фотографий пользователей.
 const newContainer = document.querySelector('.pictures');
 
 const templateMiniatures = document.querySelector('#picture').content.querySelector('.picture');
 
-const renderPhotos = () => {
+const renderPhotos = (newPhotos) => {
 
   const fragment = document.createDocumentFragment();
-  getAllUserPhotos.forEach(({url, likes, comments}) => {
+  newPhotos.forEach(({url, likes, comments}) => {
     const newElement = templateMiniatures.cloneNode(true);
     newElement.querySelector('img').src = url;
     newElement.querySelector('.picture__comments').textContent = comments.message.length;
@@ -19,7 +16,5 @@ const renderPhotos = () => {
 
   newContainer.appendChild(fragment);
 };
-
-renderPhotos(getAllUserPhotos);
 
 export {renderPhotos};
