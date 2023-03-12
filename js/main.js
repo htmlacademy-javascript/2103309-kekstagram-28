@@ -1,3 +1,4 @@
 import {getAllUserPhotos} from './data.js';
-
-getAllUserPhotos();
+import {renderPhotos} from './miniatures.js';
+const newPhotos = getAllUserPhotos();
+renderPhotos(newPhotos);
