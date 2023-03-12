@@ -5,13 +5,10 @@ const newContainer = document.querySelector('.pictures');
 
 const templateMiniatures = document.querySelector('#picture').content.querySelector('.picture');
 
-const newPhotos = getAllUserPhotos();
-
-const fragment = document.createDocumentFragment();
-
 const renderPhotos = () => {
 
-  newPhotos.forEach(({url, likes, comments}) => {
+  const fragment = document.createDocumentFragment();
+  getAllUserPhotos.forEach(({url, likes, comments}) => {
     const newElement = templateMiniatures.cloneNode(true);
     newElement.querySelector('img').src = url;
     newElement.querySelector('.picture__comments').textContent = comments.message.length;
@@ -22,5 +19,7 @@ const renderPhotos = () => {
 
   newContainer.appendChild(fragment);
 };
+
+renderPhotos(getAllUserPhotos);
 
 export {renderPhotos};
