@@ -54,12 +54,13 @@ const generatePhotoId = getId(MIN_ID_NUMBER, MAX_ID_NUMBER);
 const generateId = getId(MIN_ID_NUMBER, MAX_ID_NUMBER);
 
 // массив объектов с комментариями.
-const getUserComments = () => ({
+export const getUserComments = () => ({
   id: getRandomInteger(MIN_ID_NUMBER, MAX_COMMENT_NUMBER),
   avatar: `img/avatar-${ getRandomInteger(MIN_ID_NUMBER, MAX_AVATAR_NUMBER) }.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES)
-});
+ });
+
 
 // массив объектов с фотографиями пользователей.
 const getUserPhotos = () => ({
@@ -68,7 +69,9 @@ const getUserPhotos = () => ({
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(MIN_LIKE_NUMBER, MAX_LIKE_NUMBER),
   comments: getUserComments()
+
 });
+
 
 //создаем массив из 25 объектов-фотографий.
 const getAllUserPhotos = () => Array.from({length: MAX_ARRAY_LENGHT}, getUserPhotos);
