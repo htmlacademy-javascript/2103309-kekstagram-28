@@ -59,7 +59,7 @@ export const getUserComments = () => ({
   avatar: `img/avatar-${ getRandomInteger(MIN_ID_NUMBER, MAX_AVATAR_NUMBER) }.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES)
- });
+});
 
 
 // массив объектов с фотографиями пользователей.

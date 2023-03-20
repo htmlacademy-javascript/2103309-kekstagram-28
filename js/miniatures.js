@@ -7,7 +7,7 @@ const templateMiniatures = document.querySelector('#picture').content.querySelec
 
 const renderPhotos = (newPhotos) => {
 
-const fragment = document.createDocumentFragment();
+  const fragment = document.createDocumentFragment();
 
   newPhotos.forEach(({url, likes, comments, description }) => {
     const newElement = templateMiniatures.cloneNode(true);
@@ -23,24 +23,24 @@ const fragment = document.createDocumentFragment();
       document.querySelector('.comments-count').textContent = miniComments;
       document.querySelector('.social__caption').textContent = miniDescription;
 
-        newPhotos.slice(-3).forEach(({comments}) => {
+      newPhotos.slice(-3).forEach(() => {
 
 
-         const renderComments = document.createElement('li');
-          renderComments.classList.add('social__comment');
-          const renderAvatar = document.createElement('img');
-          renderAvatar.classList.add('social__picture');
-          renderAvatar.src = comments.avatar;
-          renderAvatar.name = comments.name;
-          renderComments.appendChild(renderAvatar);
-          const renderMessage = document.createElement('p');
-          renderMessage.classList.add('social__text');
-          renderMessage.textContent = comments.message;
-          renderComments.appendChild(renderMessage);
-          console.log(renderLiElements.appendChild(renderComments));
-         counterComments.classList.add('hidden')
-         loadCommentButton.classList.add('hidden')
-        });
+        const renderComments = document.createElement('li');
+        renderComments.classList.add('social__comment');
+        const renderAvatar = document.createElement('img');
+        renderAvatar.classList.add('social__picture');
+        renderAvatar.src = comments.avatar;
+        renderAvatar.name = comments.name;
+        renderComments.appendChild(renderAvatar);
+        const renderMessage = document.createElement('p');
+        renderMessage.classList.add('social__text');
+        renderMessage.textContent = comments.message;
+        renderComments.appendChild(renderMessage);
+        renderLiElements.appendChild(renderComments);
+        counterComments.classList.add('hidden');
+        loadCommentButton.classList.add('hidden');
+      });
     });
 
     fragment.appendChild(newElement);
