@@ -54,7 +54,7 @@ const generatePhotoId = getId(MIN_ID_NUMBER, MAX_ID_NUMBER);
 const generateId = getId(MIN_ID_NUMBER, MAX_ID_NUMBER);
 
 // массив объектов с комментариями.
-export const getUserComments = () => ({
+const getUserComments = () => ({
   id: getRandomInteger(MIN_ID_NUMBER, MAX_COMMENT_NUMBER),
   avatar: `img/avatar-${ getRandomInteger(MIN_ID_NUMBER, MAX_AVATAR_NUMBER) }.svg`,
   message: getRandomArrayElement(MESSAGES),
@@ -69,7 +69,6 @@ const getUserPhotos = () => ({
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(MIN_LIKE_NUMBER, MAX_LIKE_NUMBER),
   comments: getUserComments()
-
 });
 
 

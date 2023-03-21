@@ -9,7 +9,7 @@ const renderPhotos = (newPhotos) => {
 
   const fragment = document.createDocumentFragment();
 
-  newPhotos.forEach(({url, likes, comments, description }) => {
+  newPhotos.forEach(({url, description, likes, comments}) => {
     const newElement = templateMiniatures.cloneNode(true);
     newElement.querySelector('img').src = url;
     const miniComments = newElement.querySelector('.picture__comments').textContent = comments.message.length;
@@ -17,25 +17,27 @@ const renderPhotos = (newPhotos) => {
     const miniDescription = newElement.querySelector('.picture__likes').alt = description;
 
 
-    newElement.addEventListener('click', () => {
+   const renderCommentsList = (comments) => {
 
+      renderLiElements.innerHTML = '';
+
+      newElement.addEventListener('click', () => {
+      document.querySelector('.big-picture__img img').src = url;
       document.querySelector('.likes-count').textContent = miniLikes;
       document.querySelector('.comments-count').textContent = miniComments;
       document.querySelector('.social__caption').textContent = miniDescription;
 
-      newPhotos.slice(-3).forEach(() => {
-
-
+      comments.slice(-5).forEach((avatar, name, message) => {
         const renderComments = document.createElement('li');
         renderComments.classList.add('social__comment');
         const renderAvatar = document.createElement('img');
         renderAvatar.classList.add('social__picture');
-        renderAvatar.src = comments.avatar;
-        renderAvatar.name = comments.name;
+        renderAvatar.src = avatar;
+        renderAvatar.name = name;
         renderComments.appendChild(renderAvatar);
         const renderMessage = document.createElement('p');
         renderMessage.classList.add('social__text');
-        renderMessage.textContent = comments.message;
+        renderMessage.textContent = message;
         renderComments.appendChild(renderMessage);
         renderLiElements.appendChild(renderComments);
         counterComments.classList.add('hidden');
@@ -43,15 +45,13 @@ const renderPhotos = (newPhotos) => {
       });
     });
 
+   };
+   renderCommentsList();
+
     fragment.appendChild(newElement);
   });
   newContainer.appendChild(fragment);
-};
-
-const clearNewContainer = () => {
-  newContainer.innerHTML = '';
 
 };
 
-
-export {renderPhotos, clearNewContainer};
+export {renderPhotos, newContainer};
