@@ -16,7 +16,7 @@ const renderPhotos = (newPhotos) => {
     const miniLikes = newElement.querySelector('.picture__likes').textContent = likes;
     const miniDescription = newElement.querySelector('.picture__likes').alt = description;
 
-    const renderCommentsList = () => {
+    const renderCommentsList = (comment) => {
 
       newElement.addEventListener('click', () => {
 
@@ -27,18 +27,18 @@ const renderPhotos = (newPhotos) => {
 
         renderLiElements.innerHTML = '';
 
-        comments.slice(-5).forEach((comments) => {
+        comment.slice(-5).forEach((userComment) => {
 
           const renderComments = document.createElement('li');
           renderComments.classList.add('social__comment');
           const renderAvatar = document.createElement('img');
           renderAvatar.classList.add('social__picture');
-          renderAvatar.src = comments.avatar;
-          renderAvatar.name = comments.name;
+          renderAvatar.src = userComment.avatar;
+          renderAvatar.name = userComment.name;
           renderComments.appendChild(renderAvatar);
           const renderMessage = document.createElement('p');
           renderMessage.classList.add('social__text');
-          renderMessage.textContent = comments.message;
+          renderMessage.textContent = userComment.message;
           renderComments.appendChild(renderMessage);
           renderLiElements.appendChild(renderComments);
           counterComments.classList.add('hidden');
