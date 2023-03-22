@@ -1,9 +1,13 @@
+
 const newContainer = document.querySelector('.pictures');
+const renderLiElements = document.querySelector('.social__comments');
+const templateMiniatures = document.querySelector('#picture').content.querySelector('.picture');
 const counterComments = document.querySelector('.social__comment-count');
 const loadCommentButton = document.querySelector('.comments-loader');
-const renderLiElements = document.querySelector('.social__comments');
 
-const templateMiniatures = document.querySelector('#picture').content.querySelector('.picture');
+let commentsShow = 0;
+const PORTION_COMMENTS = 5;
+
 
 const renderPhotos = (newPhotos) => {
 
@@ -41,17 +45,43 @@ const renderPhotos = (newPhotos) => {
           renderMessage.textContent = userComment.message;
           renderComments.appendChild(renderMessage);
           renderLiElements.appendChild(renderComments);
-          counterComments.classList.add('hidden');
-          loadCommentButton.classList.add('hidden');
         });
       });
 
-    };
-    renderCommentsList(comments);
+      const downloadNewComments = () => {
+        loadCommentButton.addEventListener('click', () => {
 
+          commentsShow += PORTION_COMMENTS;
+          if (commentsShow >= comments.length) {
+
+            loadCommentButton.classList.add('hidden');
+            commentsShow = comments.length;
+          } else {
+            loadCommentButton.classList.remove('hidden');
+          }
+
+          const commentFragment = document.createDocumentFragment();
+          for (let i = 0; i < commentsShow; i++) {
+
+            const commentElement = renderCommentsList(comments[i]);
+            commentFragment.append(commentElement);
+          }
+          renderLiElements.innerHTML = '';
+          renderLiElements.append(commentFragment);
+          counterComments.innerHTML = `${commentsShow} из <span class="comments-count">${comments.length}</span> комментариев`;
+
+        });
+
+      };
+      downloadNewComments(comments);
+    };
+
+
+    renderCommentsList(comments);
     fragment.appendChild(newElement);
   });
   newContainer.appendChild(fragment);
+
 
 };
 
