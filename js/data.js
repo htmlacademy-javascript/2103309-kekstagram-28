@@ -61,16 +61,20 @@ const getUserComments = () => ({
   name: getRandomArrayElement(NAMES)
 });
 
+const getAllUserComments = () => Array.from({length: MAX_ARRAY_LENGHT}, getUserComments);
+
 // массив объектов с фотографиями пользователей.
 const getUserPhotos = () => ({
   id: generateId(),
   url: `photos/${ generatePhotoId() }.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(MIN_LIKE_NUMBER, MAX_LIKE_NUMBER),
-  comments: getUserComments()
+  comments: getAllUserComments()
 });
+
 
 //создаем массив из 25 объектов-фотографий.
 const getAllUserPhotos = () => Array.from({length: MAX_ARRAY_LENGHT}, getUserPhotos);
+
 
 export {getAllUserPhotos};
