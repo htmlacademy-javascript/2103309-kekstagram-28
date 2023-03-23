@@ -12,9 +12,9 @@ const createnewElement = ({url, likes, comments, id}) => {
   return newElement;
 };
 
-const renderPhotos = (newPhotos) => {
+const renderPhotos = (array) => {
   const fragment = document.createDocumentFragment();
-  newPhotos.forEach((newPhoto) => {
+  array.forEach((newPhoto) => {
     const newElement = createnewElement(newPhoto);
     fragment.append(newElement);
   });
