@@ -1,34 +1,24 @@
-import {renderCommentsList} from './render_new_comments.js';
-
 const templateMiniatures = document.querySelector('#picture').content.querySelector('.picture');
-const newElement = templateMiniatures.cloneNode(true);
-
 const newContainer = document.querySelector('.pictures');
 
-const miniPic = newElement.querySelector('img');
-const miniComments = newElement.querySelector('.picture__comments');
-const miniLikes = newElement.querySelector('.picture__likes');
-const miniDescription = newElement.querySelector('.picture__likes');
+const createnewElement = ({url, likes, comments, id}) => {
+  const newElement = templateMiniatures.cloneNode(true);
 
-const renderPhotos = (newPhotos) => {
+  newElement.querySelector('.picture__img').src = url;
+  newElement.querySelector('.picture__likes').textContent = likes;
+  newElement.querySelector('.picture__comments').textContent = comments.length;
+  newElement.dataset.miniatureId = id;
 
-  const fragment = document.createDocumentFragment();
-
-  newPhotos.forEach(({url, description, likes, comments}) => {
-
-    miniPic.src = url;
-    miniComments.textContent = comments.length;
-    miniLikes.textContent = likes;
-    miniDescription.alt = description;
-
-    renderCommentsList(comments);
-
-
-    fragment.appendChild(newElement);
-
-  });
-
-  newContainer.appendChild(fragment);
+  return newElement;
 };
 
-export {renderPhotos, newContainer, newElement};
+const renderPhotos = (newPhotos) => {
+  const fragment = document.createDocumentFragment();
+  newPhotos.forEach((newPhoto) => {
+    const newElement = createnewElement(newPhoto);
+    fragment.append(newElement);
+  });
+  newContainer.append(fragment);
+};
+
+export {renderPhotos, newContainer};

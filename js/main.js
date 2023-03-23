@@ -1,5 +1,4 @@
 import {getAllUserPhotos} from './data.js';
-import {renderPhotos} from './miniatures.js';
-import './fullScreenPhotos.js';
+import {renderModalPicture} from './photo_modal.js';
 const newPhotos = getAllUserPhotos();
-renderPhotos(newPhotos);
+renderModalPicture(newPhotos);
