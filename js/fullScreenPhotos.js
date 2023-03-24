@@ -1,45 +1,43 @@
-import {newContainer} from './miniatures.js';
-import {isEscapeKey, isEnterKey} from './util.js';
-
 const bigPicture = document.querySelector('.big-picture');
-const bigPicturePreview = bigPicture.querySelector('.big-picture__preview');
-const bigPictureCloseButton = bigPicturePreview.querySelector('.big-picture__cancel');
+const renderCommentsList = bigPicture.querySelector('.social__comments');
+const elementListClone = renderCommentsList.querySelector('li').cloneNode(true);
 
-const clickOnPhoto = (evt) => {
-  if (evt.target.closest('.picture')) {
-    evt.preventDefault();
-    bigPicture.classList.remove('hidden');
-    document.body.classList.add('modal-open');
-  }
-};
+export const renderNewComment = (commentsArray) => {
+  const commentFragment = document.createDocumentFragment();
 
-newContainer.addEventListener('click', clickOnPhoto);
-
-const closeBigPicture = () => {
-  bigPicture.classList.add('hidden');
-  newContainer.addEventListener('click', clickOnPhoto);
-  bigPictureCloseButton.removeEventListener('click', () => {
+  commentsArray.forEach(({avatar, name, message}) => {
+    const comment = elementListClone.cloneNode(true);
+    comment.classList.add('hidden');
+    comment.querySelector('.social__picture').src = avatar;
+    comment.querySelector('.social__picture').alt = name;
+    comment.querySelector('.social__text').textContent = message;
+    commentFragment.append(comment);
   });
+  renderCommentsList.append(commentFragment);
 };
 
-// закрыть показ большой фото по клику мыши
-bigPictureCloseButton.addEventListener('click', () => {
-  closeBigPicture();
-  document.body.classList.remove('modal-open');
-});
+// тут будет функция добавления новых комментариев.
+// export const downloadNewComments = (comment) => {
+//   loadCommentButton.addEventListener('click', () => {
+//     commentsShow += PORTION_COMMENTS;
+//     if (commentsShow >= comment.length) {
 
-// открыть показ большой фото по клику enter
-document.addEventListener('keydown', (evt) => {
-  if (isEnterKey(evt)) {
-    clickOnPhoto();
-  }
-});
+//       loadCommentButton.classList.add('hidden');
+//       commentsShow = comment.length;
 
-// закрыть показ большой фото по клику escape
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
-    closeBigPicture();
-  }
-});
+//     } else {
+//       loadCommentButton.classList.remove('hidden');
+//     }
 
-export {clickOnPhoto};
+//     const commentFragment = document.createDocumentFragment();
+//     for (let i = 0; i < commentsShow; i++) {
+
+//       const commentElement = renderCommentsList(comment[i]);
+
+//       commentFragment.append(commentElement);
+//     }
+//     renderLiElements.innerHTML = '';
+//     renderLiElements.append(commentFragment);
+//     counterComments.innerHTML = `${commentsShow} из <span class="comments-count">${comment.length}</span> комментариев`;
+//   });
+// };
