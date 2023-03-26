@@ -39,7 +39,7 @@ function removeInputListener () {
   inputComment.removeEventListener('focus', inputInFocus);
   inputHashtag.removeEventListener('blur', inputOutFocus);
   inputComment.removeEventListener('blur', inputOutFocus);
-};
+}
 
 const showEditor = () => {
   imgOverlay.classList.remove('hidden');
@@ -59,7 +59,7 @@ function closeEditor () {
 
   document.removeEventListener('keydown', onDocKeydown);
   imgUploadCancel.removeEventListener('click', closeEditor);
-};
+}
 
 imgUpload.addEventListener('change', showEditor);
 
