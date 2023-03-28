@@ -34,13 +34,13 @@ const validateComment = (value) => value.length <= COMMENT_MAX_LENGTH;
 pristine.addValidator(
   imgUploadForm.querySelector('.text__hashtags'),
   checkHashtag,
-  'Неверный хэш-тег.'
+  'Неверный хэш-тег. Хэш-теги должны разделятся между собой пробелом.'
 );
 
 pristine.addValidator(
   imgUploadForm.querySelector('.text__hashtags'),
   checkHashtagCount,
-  'Недопустимое колличество хэш-тегов. Максимум 7 хэштегов.'
+  `Недопустимое колличество хэш-тегов. Максимум${checkHashtagCount}хэш-тегов.`
 );
 
 pristine.addValidator(
@@ -52,11 +52,11 @@ pristine.addValidator(
 pristine.addValidator(
   imgUploadForm.querySelector('.text__description'),
   validateComment,
-  'Недопустимое колличество символов. Максимум 200 символов. '
+  `Недопустимое колличество символов. Максимум${validateComment}символов.`
 );
 
 imgUploadForm.addEventListener('submit', (evt) => {
-  if (!pristine.validate()) {
+  if (pristine.validate()) {
     evt.preventDefault();
   }
 });
