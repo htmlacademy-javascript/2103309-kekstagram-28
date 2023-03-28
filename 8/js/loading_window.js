@@ -63,4 +63,4 @@ function closeEditor () {
 
 imgUpload.addEventListener('change', showEditor);
 
-export {imgUploadForm};
+export {imgUploadForm, inputHashtag, inputComment};
