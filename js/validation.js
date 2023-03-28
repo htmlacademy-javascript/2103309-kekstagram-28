@@ -4,11 +4,10 @@ const HASHTAG_MAX = 5;
 const COMMENT_MAX_LENGTH = 200;
 
 const pristine = new Pristine(imgUploadForm, {
-  classTo: 'img-upload__text',
-  errorClass: 'img-upload__text--invalid',
-  successClass: 'img-upload__text--valid',
-  errorTextParent: 'img-upload__text',
-  errorTextTag: 'span',
+  classTo: 'img-upload__field-wrapper',
+  errorClass: 'img-upload__field-wrapper--invalid',
+  successClass: 'img-upload__field-wrapper--valid',
+  errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__error'
 });
 
@@ -21,7 +20,7 @@ const checkHashtag = (value) => {
 pristine.addValidator(
   inputHashtag,
   checkHashtag,
-  'Неверное написание хэш-тега.'
+  'Неверное написание хэш-тега. Нет # или лишний пробел.'
 );
 
 // проверка колличества х-т.
