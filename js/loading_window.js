@@ -1,4 +1,10 @@
 import {isEscapeKey} from './util.js';
+import {previewContainer,
+  editableImage,
+  decreaseCurrentScale,
+  increaseCurrentScale,
+  resetEffects,
+  сhangeFilterType} from './slider.js';
 
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgUpload = imgUploadForm.querySelector('#upload-file');
@@ -7,6 +13,8 @@ const imgUploadCancel = imgUploadForm.querySelector('.img-upload__cancel');
 const inputHashtag = imgUploadForm.querySelector('.text__hashtags');
 const inputComment = imgUploadForm.querySelector('.text__description');
 const inputFile = imgUploadForm.querySelector('#upload-file');
+const increaseValue = previewContainer.querySelector('.scale__control--bigger');
+const decreaseValue = previewContainer.querySelector('.scale__control--smaller');
 
 const onDocKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -14,8 +22,13 @@ const onDocKeydown = (evt) => {
     imgOverlay.classList.add('hidden');
     document.body.classList.remove('modal-open');
     document.getElementById('upload-select-image').reset();
+    resetEffects();
+    editableImage.style.transform = 'none';
   }
   removeInputListener();
+  decreaseValue.removeEventListener('click', decreaseCurrentScale);
+  increaseValue.removeEventListener('click', increaseCurrentScale);
+  imgUploadForm.removeEventListener('change', сhangeFilterType);
   imgUploadCancel.removeEventListener('click', closeEditor);
 };
 
@@ -47,6 +60,9 @@ const showEditor = () => {
   addInputListener();
 
   document.addEventListener('keydown', onDocKeydown);
+  decreaseValue.addEventListener('click', decreaseCurrentScale);
+  increaseValue.addEventListener('click', increaseCurrentScale);
+  imgUploadForm.addEventListener('change', сhangeFilterType);
   imgUploadCancel.addEventListener('click', closeEditor);
 };
 
@@ -55,9 +71,13 @@ function closeEditor () {
   document.body.classList.remove('modal-open');
   inputFile.value = '';
 
+  resetEffects();
   removeInputListener();
 
   document.removeEventListener('keydown', onDocKeydown);
+  decreaseValue.removeEventListener('click', decreaseCurrentScale);
+  increaseValue.removeEventListener('click', increaseCurrentScale);
+  imgUploadForm.removeEventListener('change', сhangeFilterType);
   imgUploadCancel.removeEventListener('click', closeEditor);
 }
 
