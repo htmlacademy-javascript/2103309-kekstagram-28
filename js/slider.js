@@ -53,7 +53,7 @@ noUiSlider.create(deepEffectSlider, {
 
 //убираем слайдер у картинки по умолчанию
 const checkIsDefault = () => {
-  if (currentEffect === noneEffect) {
+  if (currentEffect.name === noneEffect.name) {
     deepEffectContainer.classList.add('hidden');
     editableImage.style.filter = 'none';
   } else {
@@ -78,6 +78,7 @@ const resetEffects = () => {
   updateSlider();
 };
 
+// переключение эффектов
 function сhangeFilterType (evt) {
   if (evt.target.classList.contains('effects__radio')) {
     const effectsID = evt.target.value;
