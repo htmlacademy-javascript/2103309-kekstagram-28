@@ -1,7 +1,15 @@
 import {imgUploadForm, inputHashtag, inputComment} from './loading_window.js';
+import {sendData} from './api.js';
+
+const sentMessage = document.querySelector('#upload-submit');
+
 const HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
 const HASHTAG_MAX = 5;
 const COMMENT_MAX_LENGTH = 200;
+const submitMessageText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Идет публикация'
+};
 
 const pristine = new Pristine(imgUploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -56,8 +64,29 @@ pristine.addValidator(
   `Недопустимое колличество символов. Максимум ${COMMENT_MAX_LENGTH} символов.`
 );
 
-imgUploadForm.addEventListener('submit', (evt) => {
-  if (!pristine.validate()) {
+// блокировка кнопки отправки формы
+const blockSubmit = () => {
+  sentMessage.disabled = true;
+  sentMessage.textContent = submitMessageText.SENDING;
+};
+
+// разблокировка кнопки отправки формы
+const unblockSubmit = () => {
+  sentMessage.disabled = false;
+  sentMessage.textContent = submitMessageText.IDLE;
+};
+
+const submitUserForm = () => {
+  imgUploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-  }
-});
+
+    if (pristine.validate()) {
+      blockSubmit();
+      sendData(new FormData(evt.target));
+    }
+  });
+};
+
+submitUserForm();
+
+export {unblockSubmit, submitUserForm};
