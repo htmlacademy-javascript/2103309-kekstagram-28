@@ -23,6 +23,7 @@ const onDocKeydown = (evt) => {
     document.body.classList.remove('modal-open');
     document.getElementById('upload-select-image').reset();
     resetEffects();
+    document.removeEventListener('keydown', onDocKeydown);
     editableImage.style.transform = 'none';
   }
   removeInputListener();
@@ -57,6 +58,7 @@ function removeInputListener () {
 const showEditor = () => {
   imgOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
+
   addInputListener();
 
   document.addEventListener('keydown', onDocKeydown);
@@ -70,6 +72,7 @@ function closeEditor () {
   imgOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
   inputFile.value = '';
+  editableImage.style.transform = 'none';
 
   resetEffects();
   removeInputListener();
@@ -83,4 +86,4 @@ function closeEditor () {
 
 imgUpload.addEventListener('change', showEditor);
 
-export {imgUploadForm, inputHashtag, inputComment};
+export {imgUpload, imgUploadForm, inputHashtag, inputComment, onDocKeydown, closeEditor};

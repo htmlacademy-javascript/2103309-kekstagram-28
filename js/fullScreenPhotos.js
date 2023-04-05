@@ -15,29 +15,3 @@ export const renderNewComment = (commentsArray) => {
   });
   renderCommentsList.append(commentFragment);
 };
-
-// тут будет функция добавления новых комментариев.
-// export const downloadNewComments = (comment) => {
-//   loadCommentButton.addEventListener('click', () => {
-//     commentsShow += PORTION_COMMENTS;
-//     if (commentsShow >= comment.length) {
-
-//       loadCommentButton.classList.add('hidden');
-//       commentsShow = comment.length;
-
-//     } else {
-//       loadCommentButton.classList.remove('hidden');
-//     }
-
-//     const commentFragment = document.createDocumentFragment();
-//     for (let i = 0; i < commentsShow; i++) {
-
-//       const commentElement = renderCommentsList(comment[i]);
-
-//       commentFragment.append(commentElement);
-//     }
-//     renderLiElements.innerHTML = '';
-//     renderLiElements.append(commentFragment);
-//     counterComments.innerHTML = `${commentsShow} из <span class="comments-count">${comment.length}</span> комментариев`;
-//   });
-// };
