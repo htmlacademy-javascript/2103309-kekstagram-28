@@ -7,7 +7,6 @@ import './loading_window.js';
 
 const RENDER_DELAY = 500;
 
-
 try {
   const data = await getData();
   const debouncedRenderGallery = debounce(renderingNewGallery, RENDER_DELAY);
