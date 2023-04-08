@@ -12,7 +12,7 @@ const imgOverlay = imgUploadForm.querySelector('.img-upload__overlay');
 const imgUploadCancel = imgUploadForm.querySelector('.img-upload__cancel');
 const inputHashtag = imgUploadForm.querySelector('.text__hashtags');
 const inputComment = imgUploadForm.querySelector('.text__description');
-const inputFile = imgUploadForm.querySelector('#upload-file');
+
 const increaseValue = previewContainer.querySelector('.scale__control--bigger');
 const decreaseValue = previewContainer.querySelector('.scale__control--smaller');
 
@@ -71,7 +71,7 @@ const showEditor = () => {
 function closeEditor () {
   imgOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  inputFile.value = '';
+  imgUpload.value = '';
   editableImage.style.transform = 'none';
 
   resetEffects();
@@ -86,4 +86,4 @@ function closeEditor () {
 
 imgUpload.addEventListener('change', showEditor);
 
-export {imgUpload, imgUploadForm, inputHashtag, inputComment, onDocKeydown, closeEditor};
+export {imgUploadForm, inputHashtag, inputComment, onDocKeydown, closeEditor};

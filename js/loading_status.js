@@ -17,6 +17,7 @@ const pressKeyError = (evt) => {
     const errorModal = document.querySelector('.error');
     errorModal.remove();
     document.removeEventListener('keydown', pressKeyError);
+    document.addEventListener('keydown', onDocKeydown);
   }
 };
 
@@ -26,6 +27,9 @@ const clickOutStateModal = (evt) => {
     document.removeEventListener('keydown', pressKeySuccessful);
   } else if (evt.target.matches('.error')) {
     document.querySelector('.error').remove();
+
+    document.removeEventListener('keydown', pressKeyError);
+    document.addEventListener('keydown', onDocKeydown);
   }
 };
 

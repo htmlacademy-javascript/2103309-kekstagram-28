@@ -4,6 +4,7 @@ import {displayAlertMessage} from './alert_message.js';
 import {getData} from './api.js';
 import {renderBigPhoto} from './photo_modal.js';
 import './loading_window.js';
+import './loading_preview_pic.js';
 
 const RENDER_DELAY = 500;
 
