@@ -52,6 +52,7 @@ const loadingSuccessNotice = () => {
 const onErrorButtonClick = () => {
   document.querySelector('.error').remove();
   document.removeEventListener('keydown', pressKeyError);
+  document.addEventListener('keydown', onDocKeydown);
 };
 
 const loadingErrorNotice = () => {
