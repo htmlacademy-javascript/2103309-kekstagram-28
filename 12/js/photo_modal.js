@@ -73,9 +73,9 @@ const renderBigPhoto = (data) => {
     if (evt.target.closest('.picture')) {
       const target = evt.target.closest('.picture');
       const picture = data.find((item) => item.id === Number(target.dataset.id));
-
       bigPicture.classList.remove('hidden');
       loadCommentsButton.classList.remove('hidden');
+      document.addEventListener('keydown', escClick);
       document.body.classList.add('modal-open');
       bigPhoto.src = picture.url;
       likesCount.textContent = picture.likes;
@@ -83,7 +83,7 @@ const renderBigPhoto = (data) => {
       socialCaption.textContent = picture.description;
 
       clearComments();
-      renderNewComment(picture.comments);
+      renderNewComment(picture.comments, renderCommentsList);
       loadComments();
 
       closeBigPicture.addEventListener('click', closeBigPhoto);
