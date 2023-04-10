@@ -5,7 +5,7 @@ const sentMessage = document.querySelector('#upload-submit');
 
 const HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
 const HASHTAG_MAX = 5;
-const COMMENT_MAX_LENGTH = 200;
+const COMMENT_MAX_LENGTH = 140;
 const submitMessageText = {
   IDLE: 'Опубликовать',
   SENDING: 'Идет публикация'
