@@ -2,7 +2,7 @@ const bigPicture = document.querySelector('.big-picture');
 const renderCommentsList = bigPicture.querySelector('.social__comments');
 const elementListClone = renderCommentsList.querySelector('li').cloneNode(true);
 
-export const renderNewComment = (commentsArray) => {
+const renderNewComment = (commentsArray) => {
   const commentFragment = document.createDocumentFragment();
 
   commentsArray.forEach(({avatar, name, message}) => {
@@ -15,3 +15,5 @@ export const renderNewComment = (commentsArray) => {
   });
   renderCommentsList.append(commentFragment);
 };
+
+export {renderNewComment};
