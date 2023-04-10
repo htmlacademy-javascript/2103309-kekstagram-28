@@ -1,4 +1,4 @@
-import {renderNewComment} from './fullScreenPhotos.js';
+import {renderNewComment} from './render_new_comments.js';
 import {isEscapeKey, isEnterKey} from './util.js';
 import {newContainer} from './rendering.js';
 

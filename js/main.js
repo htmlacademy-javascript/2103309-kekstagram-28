@@ -1,5 +1,5 @@
 import {renderingNewGallery, init, getFilteredPictures} from './rendering.js';
-import {debounce} from './debounce.js';
+import {debounce} from './util.js';
 import {displayAlertMessage} from './alert_message.js';
 import {getData} from './api.js';
 import {renderBigPhoto} from './photo_modal.js';

@@ -6,7 +6,7 @@ import {loadingSuccessNotice, loadingErrorNotice} from './loading_status.js';
 const SERVER_URL_GET_DATA = 'https://28.javascript.pages.academy/kekstagram/data';
 const SERVER_URL_POST = 'https://28.javascript.pages.academy/kekstagram';
 
-const errorText = 'Не удалось загрузить данные. Обновите страницу и попробуйте снова.';
+const ERROR_TEXT = 'Не удалось загрузить данные. Обновите страницу и попробуйте снова.';
 
 const getData = () => fetch(SERVER_URL_GET_DATA)
   .then((response) => {
@@ -16,7 +16,7 @@ const getData = () => fetch(SERVER_URL_GET_DATA)
     return response.json();
   })
   .catch(() => {
-    displayAlertMessage(errorText);
+    displayAlertMessage(ERROR_TEXT);
   });
 
 const sendData = (body) => {
