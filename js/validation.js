@@ -31,7 +31,7 @@ pristine.addValidator(
   'Неверное написание хэш-тега. Нет # или лишний пробел.'
 );
 
-// проверка колличества х-т.
+// проверка количества х-т.
 const checkHashtagCount = (value) => {
   const hashTages = value.split(' ');
   return hashTages.length <= HASHTAG_MAX;
@@ -40,7 +40,7 @@ const checkHashtagCount = (value) => {
 pristine.addValidator(
   inputHashtag,
   checkHashtagCount,
-  `Недопустимое колличество хэш-тегов. Максимум ${HASHTAG_MAX} хэш-тегов.`
+  `Недопустимое количество хэш-тегов. Максимум ${HASHTAG_MAX} хэш-тегов.`
 );
 
 // проверка дубликатов х-т.
@@ -61,7 +61,7 @@ const validateComment = (value) => value.length <= COMMENT_MAX_LENGTH;
 pristine.addValidator(
   inputComment,
   validateComment,
-  `Недопустимое колличество символов. Максимум ${COMMENT_MAX_LENGTH} символов.`
+  `Недопустимое количество символов. Максимум ${COMMENT_MAX_LENGTH} символов.`
 );
 
 // блокировка кнопки отправки формы
